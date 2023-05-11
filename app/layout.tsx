@@ -1,29 +1,27 @@
-import Header from "./components/Header";
-import "./globals.css";
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
+import Nav from "components/Nav";
+import Provider from "components/Provider";
+import "styles/globals.css";
 
 export const metadata = {
-  title: "NEXT 13",
-  description: "www",
-  keyword: "eee",
+  title: "Promptopia",
+  description: "Discover & Share AI Propmts",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body className={poppins.className}>
-        <Header />
-        <main className="container">{children}</main>
+      <body>
+        <Provider>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+          <main className="app">
+            <Nav />
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );
-}
+};
+export default RootLayout;
